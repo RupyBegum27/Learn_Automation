@@ -26,7 +26,8 @@ public class HomeWork {
 9)close the browser
 
      */
-     WebDriver DV;
+    WebDriver DV;
+
     @BeforeMethod
     public void setUpBrowser() {
         String chromeDvPath = "BrowserDrivers\\windows\\chromedriver.exe";
@@ -35,9 +36,10 @@ public class HomeWork {
         DV.manage().window().maximize();
         DV.get("https://www.ebay.com/");
     }
-@Test
+
+    @Test
     public void TestSearchBox() throws InterruptedException {
-       // setUpBrowser();
+        // setUpBrowser();
 
         DV.findElement(By.xpath("//*[@id=\"gh-ac\"]")).sendKeys("face mask");
         DV.findElement(By.xpath("//*[@id=\"gh-btn\"]")).click();
@@ -56,35 +58,34 @@ public class HomeWork {
 
         //Test case 5: click on gender "woman".
         String expectResult2 = " Woman ";
-      String actualResult2=DV.findElement(By.xpath("//*[@id=\"s0-14-11-6-3-query_answer1-answer-2-1-0-list\"]/li[5]/div/a/div")).getText();
-    DV.findElement(By.xpath("//*[@id=\"s0-14-11-6-3-query_answer1-answer-2-1-0-list\"]/li[5]/div")).click();
+        String actualResult2 = DV.findElement(By.xpath("//*[@id=\"s0-14-11-6-3-query_answer1-answer-2-1-0-list\"]/li[5]/div/a/div")).getText();
+        DV.findElement(By.xpath("//*[@id=\"s0-14-11-6-3-query_answer1-answer-2-1-0-list\"]/li[5]/div")).click();
 
-    System.out.println("ExpectedResult2: " + expectResult2);
-    System.out.println("ActualResult2:  " + actualResult2);
+        System.out.println("ExpectedResult2: " + expectResult2);
+        System.out.println("ActualResult2:  " + actualResult2);
 
-    if (expectResult2.equalsIgnoreCase(actualResult2)){
-                System.out.println("test pass");
-            }else{
-                System.out.println("test fail");
-            }
+        if (expectResult2.equalsIgnoreCase(actualResult2)) {
+            System.out.println("test pass");
+        } else {
+            System.out.println("test fail");
+        }
 
-Thread.sleep(5000);
-    DV.findElement(By.xpath("//*[@id=\"s0-14-11-6-3-query_answer1-answer-2-1-0-list\"]/li[2]/div/a/div")).click();
-   String expectedResult3="Country/Region of Manufacture";
-   String actualResult3=DV.findElement(By.xpath("//*[@id=\"s0-14-11-0-1-2-6\"]/li[1]/ul/li[2]/ul/li[2]/div[1]/h3")).getText();
-    System.out.println("ExpectedResult3:  "+expectedResult3);
-    System.out.println("actualResult3: "+actualResult3);
-    //Assert.assertEquals(actualResult3,expectedResult3,"Actual result3 fail");
-
-
-     DV.findElement(By.xpath("//*[@id=\"x-refine__group_1__1\"]/ul/li[7]/div/a/div/div/span[1]")).click();
+        Thread.sleep(5000);
+        DV.findElement(By.xpath("//*[@id=\"s0-14-11-6-3-query_answer1-answer-2-1-0-list\"]/li[2]/div/a/div")).click();
+        String expectedResult3 = "Country/Region of Manufacture";
+        String actualResult3 = DV.findElement(By.xpath("//*[@id=\"s0-14-11-0-1-2-6\"]/li[1]/ul/li[2]/ul/li[2]/div[1]/h3")).getText();
+        System.out.println("ExpectedResult3:  " + expectedResult3);
+        System.out.println("actualResult3: " + actualResult3);
+        //Assert.assertEquals(actualResult3,expectedResult3,"Actual result3 fail");
 
 
+        DV.findElement(By.xpath("//*[@id=\"x-refine__group_1__1\"]/ul/li[7]/div/a/div/div/span[1]")).click();
 
 
     }
+
     @AfterMethod
-    public void closeBrowser(){
+    public void closeBrowser() {
         DV.close();
     }
 
